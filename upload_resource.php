@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'connect.php';
+require_once __DIR__ . '/includes/auth.php';
 
 function ensureResourceColumns($connect) {
     $courseCheck = mysqli_query($connect, "SHOW COLUMNS FROM resources LIKE 'course'");
@@ -18,6 +19,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location:login.html");
     exit();
 }
+
+requireAdmin($connect);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['resourceFile'])) {
     ensureResourceColumns($connect);
