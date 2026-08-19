@@ -1,9 +1,9 @@
 <?php
 function getDbConnection() {
     // Defaults keep the local XAMPP setup working; production uses environment variables.
-    $host = getenv('DB_HOST') ?: 'localhost';
-    $dbname = getenv('DB_NAME') ?: 'educonnect';
-    $username = getenv('DB_USER') ?: 'root';
+    $host = getenv('DB_HOST') ?: '';
+    $dbname = getenv('DB_NAME') ?: '';
+    $username = getenv('DB_USER') ?: '';
     $password = getenv('DB_PASSWORD') ?: '';
     $port = (int) (getenv('DB_PORT') ?: 3306);
 
